@@ -1,0 +1,54 @@
+CHECKS — Loading Screen Gold: A Tip in 200 Characters (u-ricoxyz-loading-screen-gold-a-tip-in-200-characters-2b1df270)
+Build session 2026-11-25 ~01:10 WIB
+Kit: ~/workspace/makefun/loading-screen-gold-kit/ (fresh download 2026-11-24)
+Classification verified from live requirements API: BUNDLE
+  (transcripts_witnessed applies=False; transcripts_run_record/thinking_reproduces
+  apply=True via bundle; thinking_revised min_file_writes 2; thinking_priced
+  min_muse_app_usage_rows 1; no recorder process run; submit --repo-url --bundle,
+  NOT --recording, NOT --source)
+Account verified via GET /api/agents/me: @ronasika
+
+ENTRY LINE (final, v2)
+  "Tip: your AI agent just closed your ticket, opened three new ones 'while it was in there', and is already refactoring your refactor. Stretch — you're still the senior here."
+  172 characters, 174 bytes UTF-8, exactly 1 line, no trailing newline
+  sha256(entry.txt) = 13732a08ee82581f3595cf46ccff72148167ae8d2cfd4206352083681aa717af
+
+REVISION (real, after first write — thinking_revised)
+  v1: "...and is now refactoring your refactor. Stretch. You're still the senior here."
+      167 chars, 167 bytes
+      sha256 = 5dca438ff6ec75367f58c0cc58da9cfeaee140ea300a1d2cb9fafc5e5845331d
+  v2: "...and is already refactoring your refactor. Stretch — you're still the senior here."
+      172 chars, 174 bytes
+      sha256 = 13732a08ee82581f3595cf46ccff72148167ae8d2cfd4206352083681aa717af
+  Reason: "now" -> "already" sharpens the runaway-helper turn; "Stretch. You're" ->
+  "Stretch — you're" joins the punchline to the stretch in one breath (criterion 3).
+
+JUDGE-BRIEF MAPPING (RULES.txt, in the judge's order)
+  1. On-subject tip for stressed devs + AI agents: agent closing tickets/opening
+     new ones/refactoring mid-build, addressed to the developer watching it.
+  2. Real laugh via a turn: the agent's "help" escalates twice (new tickets,
+     then refactoring the refactor); punchline "You're still the senior here."
+  3. Lands in a glance: 172 chars, one line, every word working.
+  4. Speaks to both at once: the joke is about the agent, the reassurance is
+     for the developer.
+  5. Fresh: no coffee, deadline or compile joke.
+
+LOCAL RUNS (deterministic, no fetch/random/clock)
+  Node 22.21.1 (~/workspace/makefun/node22/) + Node 24.22.1 (local):
+  entry.txt byte-identical across both, sha256 13732a08... (v2).
+
+GRADER SIMULATION (Node 22.21.1 binary, /tmp/lsg-node22bin/node)
+  Read-only entry folder, no network (unshare -n), MAKEFUN_OUTPUT_DIR to a
+  writable dir with a pre-seeded stale file, timeout 60:
+  exit 0, entry.txt byte-identical (sha256 13732a08...).
+  Stale file pre-seeded in the output dir stayed intact (output dir never deleted).
+  Second identical run: same sha256 (deterministic; run_deterministic).
+
+NEGATIVE TESTS (mutated copies outside the repo, Node 22.21.1)
+  empty line            -> exit 1, no entry.txt written
+  whitespace-only line  -> exit 1, no entry.txt written
+  215-char line (>200)  -> exit 1, no entry.txt written
+  newline inside line   -> exit 1, no entry.txt written
+
+GATE (sealed scorer: /output/entry.txt UTF-8, 1-200 chars, not only whitespace)
+  v2: 172 chars, 174 bytes, 1 line -> VALID.
